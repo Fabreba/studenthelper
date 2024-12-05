@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .border-animate {
+    @apply relative p-1 rounded-md bg-white text-black overflow-hidden;
+    background: linear-gradient(90deg, rgb(88, 88, 88) 50%, transparent 50%),
+                linear-gradient(90deg, rgb(88, 88, 88) 50%, transparent 50%),
+                linear-gradient(0deg, rgb(88, 88, 88) 50%, transparent 50%),
+                linear-gradient(0deg, rgb(88, 88, 88) 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 12px 2px, 12px 2px, 2px 12px, 2px 12px;
+    animation: border-dance 4s infinite linear;
+  }
+}
+
+@keyframes border-dance {
+  0% {
+    background-position: 0px 0px, 100% 100%, 0px 100%, 100% 0px;
+  }
+  100% {
+    background-position: 100% 0px, 0px 100%, 0px 0px, 100% 100%;
+  }
+}
